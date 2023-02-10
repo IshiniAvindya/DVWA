@@ -1,11 +1,14 @@
 <?php
 
-header ("X-XSS-Protection: 0");
+header("X-XSS-Protection: 1; mode=block");
 
 // Is there any input?
-if( array_key_exists( "name", $_GET ) && $_GET[ 'name' ] != NULL ) {
-	// Feedback for end user
-	$html .= '<pre>Hello ' . $_GET[ 'name' ] . '</pre>';
+if (array_key_exists("name", $_GET) && $_GET['name'] != NULL) {
+  // Get input
+  $name = htmlspecialchars($_GET['name']);
+
+  // Feedback for end user
+  $html .= "<pre>Hello ${name}</pre>";
 }
 
 ?>
