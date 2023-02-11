@@ -3,6 +3,8 @@
 if( isset( $_REQUEST[ 'Submit' ] ) ) {
 	// Get input
 	$id = $_REQUEST[ 'id' ];
+	
+	$id = mysqli_real_escape_string( $GLOBALS["___mysqli_ston"], $_REQUEST[ 'id' ] );  //ID value sanitization
 
 	switch ($_DVWA['SQLI_DB']) {
 		case MYSQL:
