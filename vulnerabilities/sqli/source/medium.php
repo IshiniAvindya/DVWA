@@ -5,6 +5,11 @@ if( isset( $_POST[ 'Submit' ] ) ) {
 	$id = $_POST[ 'id' ];
 
 	$id = mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $id);
+	
+	//ID validation
+        if (!filter_var($id, FILTER_VALIDATE_INT) || $id <= 0) {
+                            die('Invalid ID');
+         }
 
 	switch ($_DVWA['SQLI_DB']) {
 		case MYSQL:
